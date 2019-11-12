@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>个人中心</h1>
+<a href="{% url 'login:登出' %}">登出</a>
+<a href="{% url 'login:主页' %}">回到主页</a>
+<a href="{% url 'login:修改密码' %}">修改密码</a>
+<a href="{% url 'login:编辑个人信息' %}">编辑个人信息</a>
+
+
+{{ change_form.errors }}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="id_email">电子邮件地址:</label>
+        <input type="email" name="email" value="{{ user.email }}" maxlength="254" id="id_email">
+    </p>
+    <p>
+        <label for="id_昵称">昵称:</label>
+        <input type="text" name="昵称" maxlength="50" id="id_昵称" value="{{ user.普通会员表.昵称 }}">
+    </p>
+    <p>
+        <label for="id_生日">生日:</label>
+        <input type="date" name="生日" id="id_生日" value="{{ user.普通会员表.生日 }}">
+    </p>
+
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
